@@ -12,9 +12,9 @@ executionwith Airflow data pipeline to run and schedule in batch intervals
 <img width="626" height="356" alt="IBMDB2 connect" src="https://github.com/user-attachments/assets/81f39e84-89bd-455d-a1b2-09a8b5fdc4a2" />
 <img width="955" height="415" alt="IBM_DB2_db" src="https://github.com/user-attachments/assets/37a75ce2-9031-4314-b180-ebd5bbfd24a2" />
 <img width="402" height="128" alt="app_logging" src="https://github.com/user-attachments/assets/1f8a976d-cef5-45df-892c-ba05d564299d" />
-<img width="281" height="55" alt="codespace_github_docker_version" src="https://github.com/user-attachments/assets/3a1567e0-984e-4633-a377-87cf77cc9ed7" />
+<img width="281" <img width="331" height="353" alt="gcp auth" src="https://github.com/user-attachments/assets/bdc32b98-a398-4de0-a9f6-2e25b5a9956e" />
+height="55" alt="codespace_github_docker_version" src="https://github.com/user-attachments/assets/3a1567e0-984e-4633-a377-87cf77cc9ed7" />
 <img width="796" height="130" alt="dag" src="https://github.com/user-attachments/assets/3277fe8f-44aa-4f7e-a189-cad477710fe8" />
-<img width="331" height="353" alt="gcp auth" src="https://github.com/user-attachments/assets/2a755e08-bbfb-45b4-a53c-1df88cec2ff2" />
 <img width="714" height="272" alt="google_sheets gcp" src="https://github.com/user-attachments/assets/b6b50b5d-fa5b-459d-97af-54209655b1b7" />
 <img width="923" height="242" alt="airflow ui" src="https://github.com/user-attachments/assets/93faf9b5-6959-47e8-bf3f-6d82d1978d76" />
 <img width="917" height="458" alt="google looker chart visualization" src="https://github.com/user-attachments/assets/2678806a-91a7-44de-9c1e-651b70be2352" />
