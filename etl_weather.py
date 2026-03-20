@@ -202,7 +202,7 @@ def read_data_db2_gs(table_name="weather_data",**context):
     logger.info(f"Data loaded into the table {table_name} successfully!")    
   
     # push to google sheets opens browser to login with google account no crednetials.json needed
-    gc = gspread.service_account(filename='/opt/airflow/dags/sapient-cycle-300703-e8b417737ae1.json') # if gcp cloud is used use service credentials    
+    gc = gspread.service_account(filename=GOOGLE_CREDS) # if gcp cloud is used use service credentials    
     # gc = gspread.oauth(credentials_filename='/content/client_secret_899747170575-6vu3pmn521nsona5tih7utdpikil87sf.apps.googleusercontent.com.json')
     # gc = gspread.oauth()
     print("Connected to google sheets✅")
