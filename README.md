@@ -1,11 +1,10 @@
 """ETL_weather.ipynb
-python code to read the weather data from visual Crossing for particular City,Country and load as JSON
-python code runs under the docker container which runs Airflow in codespace , also can be run in cloud foundry
-which is tranformed into CSV with cleanup data
-and then load to IBM cloud DB2 database
-pushed to google sheet which is visualized using Google Looker
-<img width="947" height="445" alt="airflow ui_2" src="https://github.com/user-attachments/assets/13eff07c-269a-4666-9bf7-6c8c8eaf9a26" />
-
+python code to read the weather data from visual Crossing for particular City,Country and load as JSON \\
+python code runs under the docker container which runs Airflow in codespace , also can be run in cloud foundry \\
+which is tranformed into CSV with cleanup data \\
+and then load to IBM cloud DB2 database \\
+pushed to google sheet which is visualized using Google Looker \\
+<img width="947" height="445" alt="airflow ui_2" src="https://github.com/user-attachments/assets/13eff07c-269a-4666-9bf7-6c8c8eaf9a26" />\\
 executionwith Airflow data pipeline to run and schedule in batch intervals
 """
 <img width="941" height="505" alt="Postman_request" src="https://github.com/user-attachments/assets/5df95f47-db35-4e86-ac85-6c89112df081" />
