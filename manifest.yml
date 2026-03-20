@@ -12,3 +12,4 @@ applications:
       AIRFLOW__CORE__EXECUTOR: SequentialExecutor
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__WEBSERVER__WEB_SERVER_PORT: "8080"
+      GOOGLE_CREDENTIALS_PATH: /home/vcap/app/sapient-cycle-300703-e8b417737ae1.json

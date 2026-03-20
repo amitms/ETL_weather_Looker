@@ -70,6 +70,7 @@ city = "London,UK"
 unit_group = "metric"
 content_type = "json"
 # Fort Worth, TX
+GOOGLE_CREDS = "/home/vcap/app/sapient-cycle-300703-e8b417737ae1.json"
 
 # IBM db2 configurations
 dsn_hostname = "54a2f15b-5c0f-46df-8954-7e38e612c2bd.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud" 
