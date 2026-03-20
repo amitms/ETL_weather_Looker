@@ -1,4 +1,12 @@
-pandas
+apache-airflow==2.8.4
+flask-session==0.5.0
+flask==2.2.5
+werkzeug==2.2.3
+pandas==2.1.4
 sqlalchemy
 ibm_db
 ibm_db_sa
+gspread
+gspread-dataframe
+requests
+pendulum

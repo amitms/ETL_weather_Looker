@@ -117,7 +117,7 @@ def retrieve_weather(city, start_day, end_day, **context):
     except urllib.error.URLError as e:
       print(f"Failed to retrieve weather data: {e.reason}", file = sys.stderr)
       logger.error(f"Failed to retrieve weather data: {e.reason}", file = sys.stderr)
-
+    return f"Loaded {len(weather_data)} rows from weather API"
 ###### TRANSFORM: code for cleaning and transforming the data
 def transform_data(**context):
   records = context["ti"].xcom_pull(key="weather_data", task_ids="extract_weather")
