@@ -4,9 +4,8 @@ python code runs under the docker container which runs Airflow in codespace , al
 which is tranformed into CSV with cleanup data <br>
 and then load to IBM cloud DB2 database <br>
 pushed to google sheet which is visualized using Google Looker <br>
-<img width="947" height="445" alt="airflow ui_2" src="https://github.com/user-attachments/assets/13eff07c-269a-4666-9bf7-6c8c8eaf9a26" /><br>
-executionwith Airflow data pipeline to run and schedule in batch intervals
-<br>
+executionwith Airflow data pipeline to run and schedule in batch intervals<br>
+<img width="947" height="445" alt="airflow ui_2" src="https://github.com/user-attachments/assets/13eff07c-269a-4666-9bf7-6c8c8eaf9a26" />
 <img width="941" height="505" alt="Postman_request" src="https://github.com/user-attachments/assets/5df95f47-db35-4e86-ac85-6c89112df081" />
 <img width="929" height="494" alt="google looker studio chart" src="https://github.com/user-attachments/assets/936dbc74-d2d7-473b-acb6-1e2d47323ffa" />
 <img width="353" height="80" alt="transformed" src="https://github.com/user-attachments/assets/87ce81a6-3ea6-4447-b710-52ca2e42f23b" />
