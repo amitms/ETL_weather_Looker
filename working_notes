@@ -1,0 +1,346 @@
+
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK/2026-03-16/2026-03-16?unit_group=metric&include=days&contentType=json&key=KMRF8C6UADP84FUDRSGDYBZ2C
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/FortWorth,USA/2026-03-17/2026-03-17?unit_group=metric&include=days&contentType=json&key=KMRF8C6UADP84FUDRSGDYBZ2C
+
+
+
+IBM DB2 db name: Db2-du
+date  temperature  feels_like  humidity  precipitation  windspeed  \
+0 2026-03-17         48.8        47.3      34.5            0.0       19.2   
+
+                 resolvedaddress  
+0  Fort Worth, TX, United States  
+
+
+Set up fast bulk insert into DB2 (much faster than to_sql)
+
+Handle schema + datatypes properly
+
+Just tell me 👍
+
+docker --version
+docker compose version
+Download official Airflow docker-compose.yaml:
+Set Up Airflow with Docker Compose
+
+Create required folders:
+curl -LfO https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml
+mkdir dags logs plugins
+
+Set environment variable for permissions:
+export AIRFLOW_UID=1000
+
+Initialize Airflow
+docker compose up airflow-init
+
+Start Airflow
+docker compose up -d
+
+
+Check logs if needed:
+docker compose logs -f
+
+Open Airflow Web UI
+Ports → 8080 in Codespaces (forward the port)
+
+https://zany-adventure-p77gjw6xxgc77jq-8080.app.github.dev/home
+username: airflow
+password: airflow
+
+
+command: bash -c "pip install -r requirements.txt && airflow webserver"
+docker compose exec airflow-webserver bash
+python --version
+which python
+pip install --upgrade pip
+pip install pandas sqlalchemy ibm_db ibm_db_sa
+pip install  sqlalchemy ibm_db ibm_db_sa
+
+pandas
+sqlalchemy
+ibm_db
+ibm_db_sa
+
+cp requirements /opt/airflow/
+
+docker compose down
+docker compose up -d
+
+or
+docker compose restart
+docker compose exec airflow-webserver bash
+verify
+docker compose logs airflow-webserver | grep pandas
+
+environment:
+  - _PIP_ADDITIONAL_REQUIREMENTS=pandas==2.1.4 sqlalchemy ibm_db ibm_db_sa
+  
+  
+ /workspaces/ETL_weather_Looker/etl_weather.py
+ airflow-cli:
+     
+docker compose up --build -d
+docker compose down -v
+Start fresh
+
+docker compose ps
+
+
+airflow dags list
+
+pip install "apache-airflow==2.9.0" \
+ --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.9.0/constraints-3.10.txt"
+pip install pandas==2.1.4 --no-cache-dir
+pip install sqlalchemy ibm_db ibm_db_sa
+
+airflow@3ccfc1326251:/opt/airflow$ pip show ibm_db
+Name: ibm_db
+Version: 3.2.8
+Summary: Python DBI driver for DB2 (LUW, zOS, i5)
+
+
+/opt/airflow/.local/bin/pip install --no-cache-dir ibm_db ibm_db_sa pandas==2.1.4 sqlalchemy
+
+/home/airflow/.local/lib/python3.12/site-packages
+
+/home/airflow/.local/lib/python3.12/site-packages install --no-cache-dir ibm_db ibm_db_sa pandas==2.1.4 sqlalchemy
+
+/opt/airflow/.local/bin/pip install --no-cache-dir ibm_db ibm_db_sa pandas==2.1.4 sqlalchemy
+
+
+pip install --upgrade pip
+pip install pandas sqlalchemy ibm_db ibm_db_sa
+install pandas globally inside container
+pip install --upgrade --target=/opt/airflow/.local/lib/python3.12/site-packages pandas
+pip install gspread gspread-dataframe gspread-auth
+
+python -c "import ibm_db; import pandas; import sqlalchemy; print(ibm_db.__version__, pandas.__version__)"
+Fix — Install in system Python directly:
+bash# check which python airflow tasks use
+which python
+which python3
+
+# install using system pip not user pip
+sudo pip install ibm_db ibm_db_sa
+# or
+pip install ibm_db ibm_db_sa --target=/usr/local/lib/python3.12/site-packages
+
+
+# ✅ correct way to restart scheduler
+# Step 1 - set PYTHONPATH permanently
+echo 'export PYTHONPATH="/home/airflow/.local/lib/python3.12/site-packages:$PYTHONPATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Step 2 - kill existing scheduler
+pkill -f "airflow scheduler"
+
+# Step 3 - restart scheduler in background
+airflow scheduler &
+airflow jobs check --job-type SchedulerJob
+---
+airflow dags list
+airflow dags list-runs weather_etl
+airflow tasks list weather_etl
+
+airflow@3ccfc1326251:/opt/airflow$ airflow tasks list weather_etl
+load_data_to_db2
+retrieve_weather
+transform_data
+
+airflow dags reserialize
+airflow dags list-import-errors
+airflow scheduler 2>&1 | tail -50
+airflow dags list | grep weather_etl
+
+
+
+Option 1 — Test individual task directly (Best for testing)
+airflow tasks list weather_etl
+airflow tasks test weather_etl extract_weather 2026-03-20
+airflow tasks test weather_etl transform_data 2026-03-20
+airflow tasks test weather_etl load_data_to_db2 2026-03-20
+airflow tasks test weather_etl read_data_db2_gs 2026-03-20
+
+
+full test
+# unpause, trigger once, then pause
+airflow dags unpause weather_etl
+airflow dags trigger weather_etl
+airflow dags pause weather_etl
+
+airflow tasks logs weather_etl transform_data 2026-03-20
+ls -lrt $AIRFLOW_HOME/logs/dag_id=weather_etl/
+cat $AIRFLOW_HOME/logs/dag_id=weather_etl/run_id=manual__2026-03-20T19:11:51+00:00/task_id=extract_weather/attempt=1.log
+cat $AIRFLOW_HOME/logs/dag_id=weather_etl/run_id=manual__2026-03-20T19:11:51+00:00/task_id=transform_data/attempt=1.log
+cat $AIRFLOW_HOME/logs/dag_id=weather_etl/run_id=manual__2026-03-20T19:11:51+00:00/task_id=load_data_to_db2/attempt=1.log
+cat $AIRFLOW_HOME/logs/dag_id=weather_etl/run_id=manual__2026-03-20T19:11:51+00:00/task_id=read_data_db2_gs/attempt=1.log
+
+manual__2026-03-20T19:11:51+00:00 
+
+
+***   * /opt/airflow/logs/dag_id=weather_etl/run_id=scheduled__2026-03-20T13:50:00+00:00/task_id=load_data_to_db2/attempt=1.log
+run_id=scheduled__2026-03-20T14:00:00+00:00
+airflow dags unpause weather_etl
+airflow dags trigger weather_etl
+airflow dags pause weather_etl
+
+
+# check run status
+airflow dags list-runs -d weather_etl
+
+# check each task state
+airflow tasks state weather_etl extract_weather 2026-03-19
+airflow tasks state weather_etl transform_data 2026-03-19
+airflow tasks state weather_etl load_data_to_db2 2026-03-19
+airflow tasks state weather_etl load_to_sheets 2026-03-19
+
+pip install -r requirements.txt
+
+--------------GCP cloud------------------------
+console.cloud.google.com
+------------------
+Step 2 — Enable APIs
+
+Go to APIs & Services → Library
+Search "Google Sheets API" → Click → Enable
+Go back to Library
+Search "Google Drive API" → Click → Enable
+
+
+Step 3 — Create OAuth Credentials
+
+Go to APIs & Services → Credentials
+Click + Create Credentials → OAuth 2.0 Client ID
+If prompted → Configure Consent Screen
+
+Choose External → Create
+Fill in App name (anything) and email
+Click Save and Continue through all steps
+
+
+Back to Create OAuth 2.0 Client ID
+
+Application type → Desktop App
+Name → anything e.g. weather-etl
+
+You need both APIs enabled:
+APIStatusGoogle Sheets API✅ Already enabledGoogle Drive API❌ Enable now
+
+https://drive.google.com/drive/quota
+
+
+https://lookerstudio.google.com/u/0/
+
+--------------
+SAP BTP cloud foundry 
+https://api.cf.us10-001.hana.ondemand.com/
+
+{"links":{"self":{"href":"https://api.cf.us10-001.hana.ondemand.com"},"cloud_controller_v3":{"href":"https://api.cf.us10-001.hana.ondemand.com/v3","meta":{"version":"3.213.0"}},"network_policy_v0":{"href":"https://api.cf.us10-001.hana.ondemand.com/networking/v0/external"},"network_policy_v1":{"href":"https://api.cf.us10-001.hana.ondemand.com/networking/v1/external"},"login":{"href":"https://login.cf.us10-001.hana.ondemand.com"},"uaa":{"href":"https://uaa.cf.us10-001.hana.ondemand.com"},"credhub":null,"routing":null,"logging":{"href":"wss://doppler.cf.us10-001.hana.ondemand.com:443"},"log_cache":{"href":"https://log-cache.cf.us10-001.hana.ondemand.com"},"log_stream":{"href":"https://log-stream.cf.us10-001.hana.ondemand.com"},"app_ssh":{"href":"ssh.cf.us10-001.hana.ondemand.com:2222","meta":{"host_key_fingerprint":"hcFy2BOoeSTDj3tMa7u4kAZ+mp70Ky4Ocfm9u5/y03A","oauth_client":"ssh-proxy"}},"cloud_controller_v2":{"href":"https://api.cf.us10-001.hana.ondemand.com/v2","meta":{"version":"2.278.0"}}}}
+
+
+https://api.cf.us10-001.hana.ondemand.com
+cf8 login
+email: amitms2005@hotmail.com / Kathmandu1!
+
+API endpoint:   https://api.cf.us10-001.hana.ondemand.com
+API version:    3.213.0
+user:           amitms2005@hotmail.com
+org:            29432e21trial
+space:          dev
+
+docker option
+cf push airflow-etl \
+  --docker-image apache/airflow:2.8.0 \
+  -m 2G
+
+buildpack option (also automatically installs requirements.txt
+airflow-etl/
+├── manifest.yml
+├── requirements.txt        ← buildpack installs this automatically
+├── dags/
+│   └── etl_weather.py
+└── Procfile        
+
+cf8 push airflow-etl
+cf8 logs airflow-etl
+cf8 logs airflow-etl --recent
+cf8 events airflow-etl
+
+cf8 logs airflow-etl
+cf8 app airflow-etl
+
+airflow-etl.cfapps.us10-001.hana.ondemand.com
+username: admin
+password: A6nTyTX4bcVtPN23
+
+cf8 logs airflow-etl --recent | findstr "password"
+   WP4FQkScGVY8tQB4
+cf8 ssh airflow-etl
+cat /home/vcap/app/standalone_admin_password.txt
+
+mkdir dags
+copy etl_weather.py dags\
+
+redeploy
+cf8 push airflow-etl
+verify
+cf8 ssh airflow-etl
+ls /home/vcap/app/dags/
+cf8 enable-ssh airflow-etl
+
+cf8 restage airflow-etl
+cf8 ssh airflow-etl
+
+
+cf8 run-task airflow-etl --command "export AIRFLOW_HOME=/home/vcap/app && airflow dags list" --name list-dags
+
+cf8 logs airflow-etl --recent| findstr "etl_weather"
+dag_ID="weather_etl
+cf8 logs airflow-etl --recent| findstr "weather_etl"  
+ 
+
+# find where airflow is installed
+find /home/vcap -name "airflow" 2>/dev/null
+# try these one by one
+export PATH=$PATH:/home/vcap/app/bin
+export PATH=$PATH:/home/vcap/app/.local/bin
+export PATH=$PATH:/tmp/lifecycle/python/bin
+
+# then try
+airflow dags list
+
+export PATH=$PATH:/home/vcap/deps/0/python/bin
+export AIRFLOW_HOME=/home/vcap/app
+
+/home/vcap/deps/0/python/lib/python3.10/site-packages/airflow dags list
+
+
+Fix — Clear XCom data
+bash# SSH into container
+cf8 ssh airflow-etl
+
+# set PATH
+export PATH=$PATH:/home/vcap/deps/0/python/bin
+export AIRFLOW_HOME=/home/vcap/app
+
+# clear all XCom data for this DAG
+airflow dags clear weather_etl --yes
+
+# then retrigger
+airflow dags trigger weather_etl
+
+
+# clear all tasks for the DAG
+airflow tasks clear weather_etl --yes
+
+# then retrigger
+airflow dags trigger weather_etl
+
+
+airflow tasks clear weather_etl \
+  --start-date 2026-03-17 \
+  --end-date 2026-03-20 \
+  --yes
+  
+  # render task with its arguments
+airflow tasks render weather_etl extract_weather 2026-03-20
