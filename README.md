@@ -20,6 +20,6 @@ height="55" alt="codespace_github_docker_version" src="https://github.com/user-a
 <img width="796" height="130" alt="dag" src="https://github.com/user-attachments/assets/3277fe8f-44aa-4f7e-a189-cad477710fe8" />
 <img width="714" height="272" alt="google_sheets gcp" src="https://github.com/user-attachments/assets/b6b50b5d-fa5b-459d-97af-54209655b1b7" />
 <img width="611" height="169" alt="google sheets" src="https://github.com/user-attachments/assets/3298be36-1413-4598-8b44-cbf48eb6a081" />
-<img width="404" height="292" alt="google looker chart visualization2" src="https://github.com/user-attachments/assets/5addab0a-9dcc-40c9-becf-666daa1a4661" />
+<img width="953" height="493" alt="google looker chart visualization2" src="https://github.com/user-attachments/assets/273aaf5d-8482-43fb-abc5-28df11ed4dcf" />
 <img width="923" height="242" alt="airflow ui" src="https://github.com/user-attachments/assets/93faf9b5-6959-47e8-bf3f-6d82d1978d76" />
-<img width="917" height="458" alt="google looker chart visualization" src="https://github.com/user-attachments/assets/2678806a-91a7-44de-9c1e-651b70be2352" />
+
