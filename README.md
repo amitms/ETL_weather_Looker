@@ -7,7 +7,6 @@ pushed to google sheet which is visualized using Google Looker <br>
 executionwith Airflow data pipeline to run and schedule in batch intervals<br>
 <img width="947" height="445" alt="airflow ui_2" src="https://github.com/user-attachments/assets/13eff07c-269a-4666-9bf7-6c8c8eaf9a26" />
 <img width="941" height="505" alt="Postman_request" src="https://github.com/user-attachments/assets/5df95f47-db35-4e86-ac85-6c89112df081" />
-<img width="929" height="494" alt="google looker studio chart" src="https://github.com/user-attachments/assets/936dbc74-d2d7-473b-acb6-1e2d47323ffa" />
 <img width="353" height="80" alt="transformed" src="https://github.com/user-attachments/assets/87ce81a6-3ea6-4447-b710-52ca2e42f23b" />
 <img width="959" height="350" alt="transformed data" src="https://github.com/user-attachments/assets/aa337b39-d714-416f-9cd9-5296f3656d7c" />
 <img width="626" height="356" alt="IBMDB2 connect" src="https://github.com/user-attachments/assets/81f39e84-89bd-455d-a1b2-09a8b5fdc4a2" />
